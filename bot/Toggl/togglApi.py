@@ -1,11 +1,10 @@
 from toggl.TogglPy import Toggl
 from dataclasses import dataclass
 from typing import List
+from Utils.timeUtils import millisToText
 
-from utils.timeUtils import millisToText
 
-
-def getReport(token: str, workSpace: int, since: str, until: str) -> str:
+def getTogglReport(token: str, workSpace: int, since: str, until: str) -> str:
     """
     Fetches data from Toggl and creates printable report.
     :param token: token for Toggl
