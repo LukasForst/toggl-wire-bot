@@ -19,4 +19,11 @@ def sendReport(token, since, until):
 def processTextMessage(message):
     text = message["text"]
     if text.startswith("/report"):
-        sendReport(message["token"], "2020-03-01", "2020-03-30")
+        sendResponse(message['token'], text.split("/report", 1)[1])
+
+
+def sendResponse(token, text):
+    split = text.split(" ")
+    since = split[0]
+    until = split[1]
+    sendReport(token, since, until)

@@ -3,7 +3,7 @@ import json
 import websocket
 
 from Utils.systemUtils import getRomanToken
-from Wire.MessageHandler import processMessage
+from Wire.messageHandler import processMessage
 
 try:
     import thread
