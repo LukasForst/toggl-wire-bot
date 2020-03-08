@@ -1,4 +1,23 @@
 
+# Created by https://www.gitignore.io/api/venv
+# Edit at https://www.gitignore.io/?templates=venv
+
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+.Python
+pyvenv.cfg
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-selfcheck.json
+
+# End of https://www.gitignore.io/api/venv
+
 # Created by https://www.gitignore.io/api/macos,python,jetbrains+all,jupyternotebooks
 # Edit at https://www.gitignore.io/?templates=macos,python,jetbrains+all,jupyternotebooks
 
