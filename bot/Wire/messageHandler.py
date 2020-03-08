@@ -19,7 +19,7 @@ def sendReport(token, since, until):
 def processTextMessage(message):
     text = message["text"]
     if text.startswith("/report"):
-        sendResponse(message['token'], text.split("/report", 1)[1])
+        sendResponse(message['token'], text.split("/report", 1)[1].strip())
 
 
 def sendResponse(token, text):

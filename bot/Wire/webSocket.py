@@ -24,7 +24,6 @@ def on_error(ws, error):
 
 def on_close(ws):
     print("### closed ###")
-    thread.start_new_thread(runWebsocket, ())
 
 
 def on_open(ws):

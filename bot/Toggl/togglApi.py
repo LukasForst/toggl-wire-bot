@@ -1,6 +1,8 @@
-from toggl.TogglPy import Toggl
 from dataclasses import dataclass
 from typing import List
+
+from toggl.TogglPy import Toggl
+
 from Utils.timeUtils import millisToText
 
 
@@ -40,6 +42,7 @@ def obtainTogglReport(toggl: Toggl, workspace: int, since: str, until: str) -> d
         "since": since,
         "until": until
     }
+    print(dataFilter)
     report = toggl.getSummaryReport(dataFilter)
     return report
 
