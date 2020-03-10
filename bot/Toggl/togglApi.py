@@ -1,9 +1,46 @@
+import os
+from base64 import b64encode
 from dataclasses import dataclass
 from typing import List
 
 from toggl.TogglPy import Toggl
 
 from Utils.timeUtils import millisToText
+
+
+def obtainBase64Pdf(token: str, workSpace: int, since: str, until: str) -> str:
+    """
+    Fetches data from Toggl in PDF and creates base64 of this pdf report.
+    :param token: token for Toggl
+    :param workSpace: id of workspace from which should be data fetched
+    :param since:"2020-03-01"
+    :param until:"2020-03-01"
+    :return: printable report for given dates
+    """
+
+    toggl = getTogglClient(token)
+
+    dataFilter = {
+        "workspace_id": workSpace,
+        "since": since,
+        "until": until
+    }
+    fileName = f'work-report-{since}--{until}.pdf'
+
+    toggl.getSummaryReportPDF(dataFilter, fileName)
+    base = getBase64(fileName)
+    deleteFile(fileName)
+    return base
+
+
+def getBase64(fileName: str) -> str:
+    with open(fileName, "rb") as pdf_file:
+        pdf = b64encode(pdf_file.read()).decode('UTF-8')
+    return pdf
+
+
+def deleteFile(fileName: str):
+    os.remove(fileName)
 
 
 def getTogglReport(token: str, workSpace: int, since: str, until: str) -> str:
