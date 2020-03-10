@@ -44,6 +44,10 @@ def sendReport(token, since, until):
 def sendPdf(token, since, until):
     workspace = getWorkspaceId()
     report = obtainBase64Pdf(getTogglToken(), workspace, since, until)
-    print(report)
-    msg = {"type": "attachment", "attachment": report}
+    msg = {"type": "attachment", "attachment": {
+        "data": report,
+        "filename": f"toggl-report-{since}-{until}.pdf",
+        "mimeType": "application/pdf"
+
+    }}
     sendMessage(token, msg)
